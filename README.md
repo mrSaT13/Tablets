@@ -31,15 +31,13 @@
 
 ## 🖼️ Скриншоты
 
-Положите файлы в `screenshots/` — они появятся здесь.
-
 | Главная | Лекарства | Измерения |
 |---|---|---|
-| `screenshots/home.png` | `screenshots/medications.png` | `screenshots/measurements.png` |
+| ![Главная](screenshots/home.png) | ![Лекарства](screenshots/medications.png) | ![Измерения](screenshots/measurements.png) |
 
 | Симптомы | Настройки |
 |---|---|
-| `screenshots/symptoms.png` | `screenshots/settings.png` |
+| ![Симптомы](screenshots/symptoms.png) | ![Настройки](screenshots/settings.png) |
 
 ## 🚀 Быстрый старт
 
