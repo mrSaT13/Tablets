@@ -71,7 +71,8 @@ class Database:
                 "INSERT OR IGNORE INTO settings (key, value) VALUES (?, ?)",
                 [("theme", "Blue"), ("language", "ru"), ("is_sick", "0"), ("last_reset", ""),
                  ("doctor_key", ""), ("doctor_model", "llama3.2:1b"),
-                 ("doctor_base", "https://ollama.com"), ("doctor_provider", "ollama")],
+                 ("doctor_base", "https://ollama.com"), ("doctor_provider", "ollama"),
+                 ("tray_enabled", "0")],
             )
 
     # -- settings -----------------------------------------------------

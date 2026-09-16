@@ -55,6 +55,7 @@ class TabletsApp(MDApp):
     is_sick = BooleanProperty(False)
     home_tip = StringProperty("")
     home_ai_tip = StringProperty("")
+    tray_enabled = BooleanProperty(False)
     doctor_key_status = StringProperty("")
     doctor_model_name = StringProperty(DEFAULT_MODEL)
     doctor_provider = StringProperty("ollama")
@@ -85,6 +86,7 @@ class TabletsApp(MDApp):
         self.current_language = lang
         self.lang_data = LANG[lang]
         self.is_sick = self.db.get_setting("is_sick", "0") == "1"
+        self.tray_enabled = self.db.get_setting("tray_enabled", "0") == "1"
         self.doctor_model_name = self.db.get_setting("doctor_model", DEFAULT_MODEL) or DEFAULT_MODEL
         self.doctor_base_url = self.db.get_setting("doctor_base", DEFAULT_BASE_URL) or DEFAULT_BASE_URL
         provider = self.db.get_setting("doctor_provider", "ollama") or "ollama"
@@ -126,6 +128,8 @@ class TabletsApp(MDApp):
             pass
 
     def _start_tray(self):
+        if not self.tray_enabled:
+            return
         try:
             from .tray import start_tray
 
@@ -1001,6 +1005,19 @@ class TabletsApp(MDApp):
         self.is_sick = not self.is_sick
         self._save_setting("is_sick", "1" if self.is_sick else "0")
         self.load_home_screen()
+
+    def toggle_tray(self):
+        self.tray_enabled = not self.tray_enabled
+        self._save_setting("tray_enabled", "1" if self.tray_enabled else "0")
+        if self.tray_enabled:
+            self._start_tray()
+        else:
+            try:
+                from .tray import stop_tray
+
+                stop_tray()
+            except Exception:
+                pass
 
     def show_about(self):
         self._close_dialog()

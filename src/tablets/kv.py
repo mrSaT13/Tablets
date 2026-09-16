@@ -376,6 +376,12 @@ KV = '''
                     IconLeftWidget:
                         icon: "emoticon-sad" if app.is_sick else "emoticon-happy"
                 TwoLineAvatarIconListItem:
+                    text: app.tr('settings_tray')
+                    secondary_text: app.tr('tray_on') if app.tray_enabled else app.tr('tray_off')
+                    on_release: app.toggle_tray()
+                    IconLeftWidget:
+                        icon: "tray"
+                TwoLineAvatarIconListItem:
                     text: app.tr('theme')
                     secondary_text: app.current_theme
                     on_release: app.toggle_theme()
