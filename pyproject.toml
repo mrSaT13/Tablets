@@ -1,0 +1,35 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "tablets"
+version = "1.1.0"
+description = "Tablets — personal medication tracker, health diary and reminders (Kivy + KivyMD)"
+readme = "README.md"
+license = { text = "MIT" }
+requires-python = ">=3.10,<3.13"
+dependencies = [
+    "kivy==2.3.0",
+    "kivymd==1.2.0",
+    "plyer",
+    "fpdf2",
+    "pystray; sys_platform == 'win32'",
+]
+
+[project.optional-dependencies]
+dev = ["pytest", "ruff"]
+build = ["pyinstaller"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.ruff]
+target-version = "py310"
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "W"]

@@ -1,0 +1,7 @@
+# Tablets — runtime dependencies
+# Tested with Python 3.10 - 3.12. Python 3.13/3.14 may not have Kivy wheels yet.
+kivy==2.3.0
+kivymd==1.2.0
+plyer
+fpdf2
+pystray; sys_platform == "win32"  # system-tray icon (optional)
